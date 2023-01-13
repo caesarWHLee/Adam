@@ -19,7 +19,7 @@ import FlashNews from '../components/flash-news'
 import NavTopics from '../components/nav-topics'
 import SubscribeMagazine from '../components/subscribe-magazine'
 import EditorChoice from '../components/editor-choice'
-import LatestNews from '../components/latest-news'
+import LatestNews from '../components/new-latest-news'
 const IndexContainer = styled.main`
   background-color: rgba(255, 255, 255, 1);
   max-width: 596px;
@@ -220,6 +220,7 @@ export async function getServerSideProps(context) {
 
   //request fetched by `apollo`, should replace request fetched by `axios` in the future
   try {
+    // eslint-disable-next-line no-unused-vars
     const editorChoiceApollo = await client.query({
       query: gql`
         query GetEditorChoices {

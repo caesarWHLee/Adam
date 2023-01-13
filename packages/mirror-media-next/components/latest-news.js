@@ -216,6 +216,7 @@ export default function LatestNews(props) {
    * In this function, we push certain amount of `obtainedLatestNews` into `renderedLatestNews`, the amount of which decided by const `RENDER_PAGE_SIZE`
    */
   function showMoreLatestNews() {
+    console.log('setRenderedLatestNews', renderedLatestNewsAmount)
     setRenderedLatestNews((preState) => [
       ...preState,
       ...obtainedLatestNews.slice(
@@ -235,6 +236,12 @@ export default function LatestNews(props) {
    * which means `obtainedLatestNews` is not enough to push into `renderedLatestNews` and render, so need to execute `fetchMoreLatestNews()` to get more article.
    */
   function handleLoadMore() {
+    console.log(
+      'handleLoadMore',
+      obtainedLatestNewsAmount,
+      renderedLatestNewsAmount,
+      fetchCount
+    )
     if (isLoading) {
       return
     }
@@ -252,6 +259,7 @@ export default function LatestNews(props) {
     }
     showMoreLatestNews()
   }
+
   return (
     <Wrapper>
       {/* Temporary components for developing */}
