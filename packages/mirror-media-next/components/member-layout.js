@@ -7,7 +7,7 @@ import Header from './header'
  * @param {import('../type').Topic[]} props.topicsData
  * @returns {React.ReactElement}
  */
-export default function Layout({
+export default function MemberLayout({
   sectionsData = [],
   topicsData = [],
   children,
@@ -15,7 +15,7 @@ export default function Layout({
   return (
     <>
       <Header sectionsData={sectionsData} topicsData={topicsData} />
-      {children}
+      <main>{children}</main>
     </>
   )
 }

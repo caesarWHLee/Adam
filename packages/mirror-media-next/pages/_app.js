@@ -11,6 +11,26 @@ import {
   URL_STATIC_COMBO_TOPICS,
   API_TIMEOUT,
 } from '../config'
+import MemberLayout from '../components/member-layout'
+
+function defaultGetLayout(page, sectionsData, topicsData) {
+  const { isMember } = page.props
+
+  return (
+    <>
+      {!isMember && (
+        <Layout sectionsData={sectionsData} topicsData={topicsData}>
+          {page}
+        </Layout>
+      )}
+      {isMember && (
+        <MemberLayout sectionsData={sectionsData} topicsData={topicsData}>
+          {page}
+        </MemberLayout>
+      )}
+    </>
+  )
+}
 
 /**
  *
@@ -23,13 +43,13 @@ import {
  */
 
 function MyApp({ Component, pageProps, sectionsData = [], topicsData = [] }) {
+  const getLayout = Component.getLayout || defaultGetLayout
   return (
     <>
       <GlobalStyles />
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <Layout sectionsData={sectionsData} topicsData={topicsData} />
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />, sectionsData, topicsData)}
         </ThemeProvider>
       </ApolloProvider>
     </>
