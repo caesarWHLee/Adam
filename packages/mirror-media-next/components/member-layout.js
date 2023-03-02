@@ -15,6 +15,7 @@ export default function MemberLayout({
   return (
     <>
       <Header sectionsData={sectionsData} topicsData={topicsData} />
+      <div style={{ backgroundColor: 'red' }}>MemberLayout</div>
       <main>{children}</main>
     </>
   )
