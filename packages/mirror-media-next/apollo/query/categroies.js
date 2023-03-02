@@ -6,6 +6,7 @@ const fetchCategorySections = gql`
       id
       name
       slug
+      isMemberOnly
       sections {
         id
         name

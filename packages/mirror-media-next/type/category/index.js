@@ -13,6 +13,7 @@ export default {}
  *  id: String,
  *  name: String,
  *  slug: String,
+ *  isMemberOnly: string,
  *  sections: CategorySection,
  * }} Category
  */

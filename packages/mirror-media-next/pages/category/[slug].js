@@ -147,11 +147,13 @@ export async function getServerSideProps({ query, req }) {
   const posts = handledResponses[0]?.posts || []
   /** @type {import('../../type/category').Category} */
   const category = handledResponses[1]?.category || {}
+  const isMember = category.isMemberOnly
 
   const props = {
     postsCount,
     posts,
     category,
+    isMember,
   }
 
   return { props }
