@@ -99,7 +99,7 @@ export async function getServerSideProps({ req }) {
       const annotatingError = errors.helpers.wrap(
         response.reason,
         'UnhandledError',
-        'Error occurs while getting section page data'
+        'Error occurs while getting section/topic page data'
       )
 
       console.log(

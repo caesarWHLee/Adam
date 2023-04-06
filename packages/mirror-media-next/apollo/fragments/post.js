@@ -13,6 +13,7 @@ import { section } from './section'
  * @property {import('./category').Category} [categories]
  * @property {import('./section').Section} [sections]
  * @property {import('./photo').Photo} [heroImage]
+ * @property {boolean} [isFeatured]
  */
 
 export const post = gql`
@@ -35,5 +36,6 @@ export const post = gql`
     heroImage {
       ...heroImage
     }
+    isFeatured
   }
 `

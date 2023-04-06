@@ -73,8 +73,6 @@ const ItemBrief = styled.div`
  *  name: string,
  *  brief: import('../../../type/draft-js').Draft,
  *  heroImage: HeroImage,
- *  sortOrder: number,
- *  createdAt: string,
  * }} Topic
  *
  */
