@@ -39,7 +39,13 @@ export const topic = gql`
     leading
     type
     style
-    posts(where: $postsFilter, orderBy: $postsOrderBy) {
+    postsCount(where: $postsFilter)
+    posts(
+      where: $postsFilter
+      orderBy: $postsOrderBy
+      take: $postsTake
+      skip: $postsSkip
+    ) {
       ...post
     }
   }

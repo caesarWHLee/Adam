@@ -22,6 +22,8 @@ const fetchTopic = gql`
     $topicFilter: TopicWhereUniqueInput!
     $postsFilter: PostWhereInput!
     $postsOrderBy: [PostOrderByInput!]!
+    $postsTake: Int
+    $postsSkip: Int!
   ) {
     topic(where: $topicFilter) {
       ...topic

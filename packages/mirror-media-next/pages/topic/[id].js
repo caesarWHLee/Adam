@@ -1,11 +1,28 @@
 import errors from '@twreporter/errors'
 
 import client from '../../apollo/apollo-client'
+import axios from 'axios'
+
 import { fetchTopic } from '../../apollo/query/topics'
 import { GCP_PROJECT_ID } from '../../config/index.mjs'
+import TopicList from '../../components/topic/list/topic-list'
 
-export default function Topic({ topic }) {
-  return <div>Topic {topic.name}</div>
+const RENDER_PAGE_SIZE = 12
+
+export default function Topic({ topic, slideshowData }) {
+  switch (topic.type) {
+    case 'list':
+      return (
+        <TopicList
+          topic={topic}
+          renderPageSize={RENDER_PAGE_SIZE}
+          slideshowData={slideshowData}
+        />
+      )
+
+    default:
+      break
+  }
 }
 
 /**
@@ -29,6 +46,8 @@ export async function getServerSideProps({ query, req }) {
         topicFilter: { id: topicId },
         postsFilter: { state: { equals: 'published' } },
         postsOrderBy: [{ isFeatured: 'desc' }, { publishedDate: 'desc' }],
+        postsTake: RENDER_PAGE_SIZE * 2,
+        postsSkip: 0,
       },
     }),
   ])
@@ -69,9 +88,20 @@ export async function getServerSideProps({ query, req }) {
   })
 
   const topic = handledResponses[0]?.topic || []
+  let slideshowData = []
+  if (topic && topic.leading === 'slideshow') {
+    // mm 2.0 fetch way, need to be changed to query mm k6 directly
+    const { data } = await axios({
+      method: 'get',
+      url: 'http://104.199.190.189:8080/images?where=%7B%22topics%22%3A%7B%22%24in%22%3A%5B%225a30e6ae4be59110005c5e6b%22%5D%7D%7D&max_results=25',
+      timeout: 1500,
+    })
+    slideshowData = data?._items
+  }
 
   const props = {
     topic,
+    slideshowData,
   }
 
   return { props }
