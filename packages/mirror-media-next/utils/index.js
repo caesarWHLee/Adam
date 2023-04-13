@@ -216,8 +216,10 @@ const transformTimeDataIntoSlashFormat = (time) => {
 //TODO: add more specific type in param `arrayNeedToSort` and `arraySortReference`
 /**
  * Sorts an array of objects based on the order of ids in another array of objects.
- * @param {Object[]} arrayNeedToSort
- * @param {Object[]} arraySortReference
+ * @template T
+ * @param {Array<{id: string, [key:string]: any} & T>} arrayNeedToSort
+ * @param {{id: string, [key:string]: any}[]} arraySortReference
+ * @returns {Array<T>}
  */
 const sortArrayWithOtherArrayId = (arrayNeedToSort, arraySortReference) => {
   const sortedArray = arrayNeedToSort.slice().sort((a, b) => {

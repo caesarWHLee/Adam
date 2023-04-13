@@ -73,34 +73,9 @@ const { DraftRenderer } = MirrorMedia
  */
 
 /**
- * @typedef {import('../../apollo/query/post').Post &
- * {
- * id: string,
- * slug: string,
- * title: string,
- * titleColor: "dark" | "light",
- * subtitle: string,
- * publishedDate: string,
- * updatedAt: string,
- * state: "published" | "draft" | "scheduled" | "archived" | "invisible",
- * sections: Sections | [],
- * manualOrderOfSections: Sections | [] | null,
- * writers: import('../../components/story/normal/article-info').Contacts | [],
- * manualOrderOfWriters: Contacts | [] | null,
- * photographers: Contacts | [],
- * camera_man: Contacts | [],
- * designers: Contacts | [],
- * engineers: Contacts | [],
- * vocals: Contacts | [],
- * extend_byline: string,
- * tags: import('../../components/story/normal/article-info').Tags | [],
- * heroVideo : HeroVideo | null,
- * heroImage : HeroImage | null,
- * heroCaption: string,
- * brief: Draft,
- * content: Draft,
- * relateds: Relateds | []
- * } } PostData
+ * @typedef {Pick<import('../../apollo/query/post').Post, 'id' | 'slug' | 'title' | 'titleColor' |
+ *  'subtitle' | 'publishedDate' | 'updatedAt' | 'state' | 'sections' | 'manualOrderOfSections'| 'writers' | 'manualOrderOfWriters' | 'photographers' | 'camera_man'
+ * | 'designers' | 'engineers' | 'vocals' | 'extend_byline' | 'tags' | 'heroVideo' | 'heroImage' | 'heroCaption' | 'brief' | 'content' | 'relateds'> } PostData
  */
 
 const sectionColor = css`
