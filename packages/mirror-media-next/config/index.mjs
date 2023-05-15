@@ -22,6 +22,7 @@ let GA_MEASUREMENT_ID = ''
 let GTM_ID = ''
 let SEARCH_URL = 'search-url/search'
 let URL_STATIC_POPULAR_NEWS = ''
+let URL_RESTFUL_SERVER = ''
 
 switch (ENV) {
   case 'prod':
@@ -37,6 +38,7 @@ switch (ENV) {
       'https://storage.googleapis.com/static-mirrormedia-dev/files/json/header_member.json'
     URL_STATIC_POST_EXTERNAL =
       'https://statics.mirrormedia.mg/json/post_external'
+    URL_RESTFUL_SERVER = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}`
     DONATION_PAGE_URL = 'https://mirrormedia.oen.tw/'
     GA_MEASUREMENT_ID = 'G-341XFN0675'
     GTM_ID = 'GTM-NCH86SP'
@@ -56,6 +58,7 @@ switch (ENV) {
       'https://storage.googleapis.com/static-mirrormedia-dev/files/json/header_member.json'
     URL_STATIC_POST_EXTERNAL =
       'https://statics.mirrormedia.mg/json/post_external'
+    URL_RESTFUL_SERVER = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}`
     DONATION_PAGE_URL = 'https://mirrormedia.oen.tw/'
     GA_MEASUREMENT_ID = 'G-32D7P3MJ8B'
     GTM_ID = 'GTM-KVDZ27K'
@@ -70,6 +73,7 @@ switch (ENV) {
     API_PORT = '8080'
     URL_STATIC_COMBO_TOPICS = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/combo?endpoint=topics`
     URL_K3_FLASH_NEWS = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/getposts?where={"categories":{"$in":["5979ac0de531830d00e330a7","5979ac33e531830d00e330a9","57e1e16dee85930e00cad4ec","57e1e200ee85930e00cad4f3"]},"isAudioSiteOnly":false}&clean=content&max_results=10&page=1&sort=-publishedDate`
+    URL_RESTFUL_SERVER = 'https://rest-dev.mirrormedia.mg'
     URL_STATIC_COMBO_SECTIONS =
       'https://statics.mirrormedia.mg/json/sections.json'
     URL_STATIC_PREMIUM_SECTIONS =
@@ -92,6 +96,7 @@ switch (ENV) {
     URL_STATIC_PREMIUM_SECTIONS = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/json/header_member.json`
     URL_STATIC_COMBO_TOPICS = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/api/v2/combo?endpoint=topics`
     URL_K3_FLASH_NEWS = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/api/v2/getposts?where={"categories":{"$in":["5979ac0de531830d00e330a7","5979ac33e531830d00e330a9","57e1e16dee85930e00cad4ec","57e1e200ee85930e00cad4f3"]},"isAudioSiteOnly":false}&clean=content&max_results=10&page=1&sort=-publishedDate`
+    URL_RESTFUL_SERVER = 'https://rest-dev.mirrormedia.mg'
     URL_STATIC_POST_EXTERNAL = `${API_PROTOCOL}://${RESTFUL_API_HOST}:${API_PORT}/json/post_external`
     DONATION_PAGE_URL = 'https://mirrormedia.testing.oen.tw/'
     GA_MEASUREMENT_ID = 'G-36HYH6NF6P'
@@ -109,6 +114,7 @@ export {
   URL_STATIC_COMBO_TOPICS,
   URL_K3_FLASH_NEWS,
   URL_STATIC_POST_EXTERNAL,
+  URL_RESTFUL_SERVER,
   DONATION_PAGE_URL,
   GA_MEASUREMENT_ID,
   GTM_ID,

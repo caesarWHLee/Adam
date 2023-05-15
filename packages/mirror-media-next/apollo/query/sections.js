@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { section } from '../fragments/section'
+import { section, sectionWithCategory } from '../fragments/section'
 
 const fetchSection = gql`
   ${section}
@@ -10,4 +10,13 @@ const fetchSection = gql`
   }
 `
 
-export { fetchSection }
+const fetchSectionWithCategory = gql`
+  ${sectionWithCategory}
+  query ($where: SectionWhereUniqueInput!) {
+    section(where: $where) {
+      ...section
+    }
+  }
+`
+
+export { fetchSection, fetchSectionWithCategory }
