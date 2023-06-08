@@ -1,8 +1,7 @@
 RUN set -e; \
     apt-get update -y && apt-get install -y \
-    tini \
-    apt-get update; \
-    apt-get clean
+    tini; \
+    && apt-get clean
 
 ARG NODE_VERSION=14.17.3
 
